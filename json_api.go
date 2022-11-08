@@ -38,6 +38,7 @@ func NewJSONAPIServer(listenAddr string, svc PriceService) *JSONAPIServer {
 
 func (s *JSONAPIServer) Run() {
 	http.HandleFunc("/", MakeAPIFunc(s.HandleFetchPrice))
+	http.HandleFunc("/v2", MakeAPIFunc(s.HandleFetchPrice))
 	http.ListenAndServe(s.listenAddr, nil)
 }
 
@@ -46,6 +47,8 @@ func (s *JSONAPIServer) HandleFetchPrice(ctx context.Context, w http.ResponseWri
 	if len(ticker) == 0 {
 		return fmt.Errorf("invalid ticker")
 	}
+
+	// they will put everything here
 
 	price, err := s.svc.FetchPrice(ctx, ticker)
 	if err != nil {

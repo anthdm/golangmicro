@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "github.com/anthdm/micro/proto";
+
+service PriceFetcher {
+	rpc FetchPrice(PriceRequest) returns (PriceResponse);
+}
+
+message PriceRequest {
+	string ticker = 1;
+}
+
+message PriceResponse {
+	string ticker = 1;
+	float price = 2;
+}
