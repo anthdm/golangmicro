@@ -11,7 +11,7 @@ sudo apt install -y protobuf-compiler
 ### MacOS
 
 ```
-brew install protobuff
+brew install protobuf
 ```
 
 ### GRPC and Protobuffer package dependencies
